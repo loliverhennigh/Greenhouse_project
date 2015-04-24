@@ -39,6 +39,7 @@ void green_house_calc_total_fittness(green_house * gh)
 	{
 		gh->total_fittness = gh->total_fittness + gh->fittness[i];
 	}
+	gh->total_fittness = gh->total_fittness / (double) gh->run_time;
 }
 
 void green_house_run(green_house * gh, double pump_threshold, int pump_time, int mist_frequency, int mist_time)
@@ -86,15 +87,15 @@ void green_house_run(green_house * gh, double pump_threshold, int pump_time, int
 	for (i = 1; i < gh->run_time; i++)
 	{
 		// update the mass of air in tank. -(loss from mister) + (pump intake)
-		gh->mass_air_tank[i] = - gh->pipe_setting * (gh->mass_air_tank[i-1] / gh->volume_air_tank) * gh->mist_control[i-1] + gh->pump_setting * gh->pump_control[i-1] + gh->mass_air_tank[i-1];
+		gh->mass_air_tank[i] = - gh->pipe_setting * gh->mist_control[i-1] * (gh->mass_air_tank[i-1] / gh->volume_air_tank) * gh->mist_control[i-1] + gh->pump_setting * gh->pump_control[i-1] + gh->mass_air_tank[i-1];
 		// update plant moisture keeping below max moisture. -(evaporation) + (mister) 
-		gh->plant_moisture[i] = gh->plant_moisture[i-1] + (gh->mist_control[i-1] * gh->mist_setting) - (gh->evaporation_rate);
+		gh->plant_moisture[i] = gh->plant_moisture[i-1] + (gh->mist_control[i-1] * gh->mist_setting * (gh->mass_air_tank[i-1] / gh->volume_air_tank)) - (gh->evaporation_rate);
 		if(gh->plant_moisture[i] > gh->max_moisture)
 			{ gh->plant_moisture[i] = gh->max_moisture; }
 		if(gh->plant_moisture[i] < 0.0)	
 			{ gh->plant_moisture[i] = 0.0; }
 		// update pump_control (trigger on and hold on)
-		if(gh->mass_air_tank[i-1] < gh->pump_threshold)
+		if(gh->mass_air_tank[i-1] < pump_threshold)
 		{
 			gh->pump_on_off[i] = 1.0;
 			store_pump = pump_time;
