@@ -8,7 +8,7 @@
 \usepackage{tikz}
 \usepackage{enumerate}
 \usepackage{mathrsfs}
-
+\usepackage{graphicx}
 
 \usetikzlibrary{arrows,snakes,backgrounds,positioning,shadows}
 
@@ -16,7 +16,7 @@
 
 \begin{document}
 
-\title{Heat Lab}
+\title{Control Optimization of Water System for Aeroponics}
 \author{Oliver Hennigh \\
 Clarkson University}
 \renewcommand{\today}{}
@@ -28,121 +28,155 @@ Clarkson University}
 \newtheorem*{t2}{Definition}
 
 \begin{abstract}
-We have examined properties of converting electrical energy to heat. By setting up a resistor circuit and a calorimeter we were able to capture the energy released from the electrical power magic force. By measuring this with respect to time we could calculate several things about the system. Our recorded data matched gave us good predicted values of several constants.
+We have created a model to mimic the behavour of aeroponic water system. Using search algorithms we found optimal or sub optimal control scheme for such systems. The aeroponic water system of investigation uses air compressor to spray fine mists onto free roots of various plants. Optimazation occures for both correct moisture percent in roots as well as compressor active time. We propose our model be used to optimize Clarkson Universities Greenhouse project.
 \end{abstract}
 
 
-\section{Method}
-If there was not much to do in lab three then there really want much to do in this one. We had to measure the mass of the water by first measuring the empty calorimeter and then both the calorimeter and water. The water at this point was in the calorimeter. This poses the problem of how to find the mass of the water. We we devised a method to do so. Using the simple and elegant power of addition and subtraction we notice something very strange. Letting $m_w$ be mass of water, $m_c$ be mass of calorimeter, and $m_{cw}$ be the measured mass of both,
+\section{Introduction}
 
-\begin{equation}
-	m_{cw} = m_w + m_c
-\end{equation}
+In aeroponics nutrient ritch water is spraid onto the free hanging root system of plants. This method of cultivation has many benifits including maximal oxygen intake and high nutrient uptake. The main drawback is the methods need for mist production. It is common that compressors are used to store air preasure and release mists at periodic intervals. This system is used by Clarkson Universities Greenhouse project and has prompted our interest in modeling it. 
 
-Wow, and they say there are no more heroes. Now we can use this to get the mass of the water
+The model consist of a compressor, preasure tank, mist pipe and root system. The compressor is activated when the preasure tank drops to a threshold preasure. This causes the compressor to be activated for a precalculated amount of time. The mist pipe switches on and off at a particular frequency and period. The root system is modeld as a drying system with a given max moisture content and linear evaporation rate. ***.
 
-\begin{equation}
-	m_w = m_{cw} - m_c
-\end{equation}
+\subsection{Mathematics of Model}
+Several assumptions are made about each aspect of the model. There is an assumed linear drying rate of the roots. The mist spray rate is linear dependent on preasure of the tank. The compressor is assumed to increase preasure at a constant rate. Modeling this with equation we get the system
 
-Well Okie dokie then. Now we need to find like $J$ or something. We can use this equation from the lab book
-
-\begin{equation}
-	S = \frac{IV}{J(mC_w + M_cC_c + M_sC_s)}
-\end{equation}
-
-Where $S$ is the slope of the line temperature vs time. $C_w$ is the specific heat of water J/mC, $C_c$ the specific heat of the calorimeter J/mC, $C_s$ the specific heat of the stirring rod J/mC, and $M_s$ is the mass of said rod in grams. Those are the working equations of the lab. 
-
-\section{Data and Results}
-
-\subsection{Temperature readings over time}
-
-These measurements were gathered while performing the experiment. Measuring the masses of each component we found $m_l = 44.7 g$, $m_w = 210.9 g$. We already know that $m_sC_s = 2.5$ cal/C and $C_l = 0.21$ cal/gC. Water is of course $C_w = 1$ cal/gC.
 
 \begin{table}[ht]
-\caption{temp measurements while resistor heating}
+\caption{Constants of Interest}
 \centering
-\begin{tabular} {c c c c}
+\begin{tabular} {c c}
 \hline\hline
- Temp in C & time in sec & V in Volts & I in amps \\ [0.5ex]
+ Variable & explination \\ [0.5ex]
 \hline
-15.1 & 0 & 6.8 & 1.5 \\
-16.3 & 92 & 6.8 & 1.5 \\
-17.1 & 176 & 6.8 & 1.5 \\
-18 & 255 & 6.8 & 1.5 \\
-19 & 355 & 6.8 & 1.5 \\
-20 & 449 & 6.8 & 1.5 \\
-21 & 575 & 6.8 & 1.5 \\
-22 & 655 & 6.8 & 1.5 \\
-23 & 758 & 6.8 & 1.5 \\
-24 & 848 & 6.8 & 1.5 \\
-25 & 935 & 6.8 & 1.5 \\
-26 & 1069 & 6.8 & 1.5 \\
-27 & 1170 & 6.8 & 1.5 \\
-28 & 1258 & 6.8 & 1.5 \\
-29 & 1338 & 6.8 & 1.5 \\
-30 & 1453 & 6.8 & 1.5 \\
-31 & 1530 & 6.8 & 1.5 \\
-32 & 1644 & 6.8 & 1.5 \\
+$P_m$ & air loss rate from mister \\
+$W_m$ & water spray rate from mister \\
+$E_r$ & evaporation rate of roots \\ 
+$M_m$ & max moister content of roots \\ 
+$V_t$ & volume of tank \\
+$C_r$ & compression rate of compressor \\
+$M_c(t)$ & mist control function with values 0 or 1 \\
+$P_c(t)$ & pump control function with values 0 or 1 \\
+$M(t)$ & moister content of roots in percent \\
+$V(t)$ & volume of air compressed in tank \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{equation}
+		  V(t+1) = V(t) + C_r P_c(t) - P_m \frac{V(t)}{V_t} M_c(t)
+\end{equation}
+
+\begin{equation}
+		  M(t+1) = M(t) + W_m \frac{V(t)}{V_t} M_c(t) - E_r
+\end{equation}
+
+\subsection{Optimization}
+
+We wish to optimize both the power usage of the compressor as well as maintaining ideal moister content in the roots. We have included a cost function for the number of times the compressor is activated. This is because starting the compressor often takes several times as much energy as running it. Putting this together gives the following optimization problem.
+
+\begin{table}[ht]
+\caption{Optimization constants}
+\centering
+\begin{tabular} {c c}
+\hline\hline
+ Variable & explination \\ [0.5ex]
+\hline
+$I_m$ & Ideal moister content of root \\
+$C_s$ & Cost for turning the compressor on \\
+$\lambda_r$ & importance factor of root moisture \\
+$\lambda_m$ & importance factor of motor usage \\ 
+\hline
+\end{tabular}
+\end{table}
+
+\begin{equation}
+		  O = \lambda_r || I_m - M(t) || + \lambda_m || P_c(t) + C_s||
+\end{equation}
+
+Because this optimization takes into account both moisture exprestions and cost of running the compressor we have included constants $\lambda_r$ and $\lambda_m$ to control the importance of each componet.
+
+
+\subsection{Search Space}
+
+The hope for optimizing these equations was to use calculus of variations however there are several real world constrants that make this difficult. Both the mist and pump control must be discrete 0, 1 for relevance to the Clarkson greenhouse project. I believe that the problem can still be solved analyticaly however in the interest of time we have coded the model and simply searched for the optimal solution. Our search space is inspired by the system currently used at Clarkson. 
+
+\begin{table}[ht]
+\caption{Search Space}
+\centering
+\begin{tabular} {c c}
+\hline\hline
+ Variable & explination \\ [0.5ex]
+\hline
+$F_m$ & frequency of mister activation \\
+$M_t$ & mist activation time \\
+$T_p$ & threshold presure to activate compressor \\ 
+$C_t$ & compressor activation time \\ 
+\hline
+\end{tabular}
+\end{table}
+
+By randomly trying combinations of these values and running our model on them we could discover the optimal or sub optimal solutions.
+
+\subsection{Appling to Clarkson's Greenhouse project}
+
+Our proposed model is highly dependent on many unknown constants. These values can be found by performing simple experiments and calculations. To illustrate this we have included several instructions on obtaining various constants
+
+\begin{table}[ht]
+\caption{Constants cook book}
+\centering
+\begin{tabular} {p{1 cm} p{9cm}}
+\hline\hline
+ Variable & method \\ [0.5ex]
+\hline
+$P_m$ & Measure preasure decrease of tank vs time and do a linear interpilation. Calculated volume change from preasure change \\
+$W_m$ & Weight weight increase of root vs time with mist on and do linear interpilation. \\
+$E_r$ & Weight root system while drying and do linear interpilation. It should follow a negative exponential. \\ 
+$M_m$ & Compare weight of soaked roat and completely dry root. \\ 
 \hline
 \end{tabular}
 \end{table}
 
 
-\subsection{Question 1}
-Plot temp vs time and average $V$ as well as $I$ to determine $J$
+\section{Data and Results}
 
-Plot on back. We calculated the average values if $V = 6.8 Volts$ and $I = 1.5 amps$. Using this slope = .0101 and the equation
-
-\begin{equation}
-S = \frac{IV}{J(mC_w + M_cC_c + M_sC_s)}
-\end{equation}
-
-We find the value of $J = \frac{1010}{mC_w + M_cC_c + M_sC_s} = 4.55$ joules/ cal. Thats pretty close to the $4.19$ joules/ cal that it really is.
-
-\subsection{Question 3}
-Will a heating coil that has lower resistance take longer of shorter to heat up
-
-The power dissipation is $P = \frac{V^2}{R}$ so given the same voltage and lower resistance $P$ will increase. This means that the experiment will be shorter as it will take less time to heat up.
-\subsection{Question 4}
-The power dissipated in a resistor is inversely proportional to the resistance.
-
-True for the same reason in 3. $P = \frac{V^2}{R}$.
-\subsection{Question 5}
-A 1 kW heater is designed to operate at 220 V. (a) What is its resistance, and what current does it draw? (b) What is the power of this resistor if it operates at 110V?
-
-(a) Well $P = \frac{V^2}{R}$ so $R = 48.4$ Ohms. $V/R = I$ so $I = 4.54$ amps. 
-
-(b) Then $P = \frac{V^2}{R}$ so $P = 250$ Watts.
-\subsection{Question 7}
-coper bowl 150g. Water 220g. Temperature 20.0 C. Copper cylinder 300 g. Steam 5 g. Final temp 100 C.
-
-(a) Well the water went from 20 to 100 C so given specific heat 1 cal/g (C) and 220 grams this gives $H_w = 1 * 220 * 80 = 17600$ cal. 
-
-(b) Well the bowl went from 20 to 100 C so given specific heat .0923 cal/ g C and 150 g bowl this gives $H_b = .0923 * 150 * 80 = 1107$ cal.
-
-(c) the energy must be constant so $.0923 * 300 * (t - 100) = 1107 + 17600 + H_v = 18707 + 5 * 540 = 21407$. So $t = 873.09 C$. Seems Ok. 
+We have coded our model and run several simulations. The following data is the result of the following realistic constant values.
 
 
-\subsection{Question 8}
-A 1500 kg Buick moving at 90 km/h brakes to stop, at uniform deceleration and without skidding, over a distance of 80 m. At what average rate is mechanical energy transferred to thermal energy in the brake system.
+\begin{table}[ht]
+\caption{Test Model}
+\centering
+\begin{tabular} {c c}
+\hline\hline
+ Variable & value \\ [0.5ex]
+\hline
+$P_m$ & .3 units per second\\
+$W_m$ & .01 percent per second \\
+$E_r$ & .0002 percent per second\\ 
+$M_m$ & .16 percent \\ 
+$V_t$ & 10 units \\
+$C_r$ & 2 units \\
+$I_m$ & .08 \\
+$C_s$ & 3.0 \\
+$\lambda_r$ & 3.0 \\
+$\lambda_m$ & 1.0 \\ 
+\hline
+\end{tabular}
+\end{table}
 
-Assuming a uniform deceleration we solve for the acceleration $v_o^2 = 2a(x - x_0)$ so $90^2 / -(80*2) = -50.625 m/s^2$. This gives the time till stop $t = 1.77 sec$. The total energy transferred to thermal energy is $E = 1/2 m v^2 = 1/2 * 1500 * (90 * 1000 / (3600))^2 = 468750 J$. This makes the average dissipation $264830$ W.
+\section{Produced Data}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=60mm]{root_moisture_content_1.jpg}
+	\includegraphics[width=60mm]{root_moisture_content_1.jpg}
+\end{figure}
 
 
-\subsection{Question 9}
-surface area required to raise the temperature of 200 L water from 20 C to 40 C in 1 h. 
-
-First I will see how many joules it takes to raise the temp of this water. $E = m K (t - t_0) = (200*1000) g * (4.17) J/g C (20) C = 16680000 J$. This needs a wattage of $4633$ W if you need to do it in $3600$ seconds. So the energy produced by the light will be $.2 * 700 = 140 W/m^2$. $4433 / 140 = 31.6 m^2$ and thats how much is needed.
-
-\subsection{Question 10}
-What mass of steam must be mixed with 150 g of ice to produce liquid water at $50 C$?
-
-The energy needed to melt the ice will be $150g  *333.5 J/g = 49950 J$. The energy needed to heat it from $0$ C to 50 C is $150 * 4.186 * 50 = 31350 J$. The energy in the steam equal to these things to $49950 + 31350 = m * 4.186 * 50 + m * 2260 = m(4.186 * 50 + 2260)$. So working this out it will take $32.9$ grams of steam.
+\subsection{Temperature readings over time}
 
 
 \section{Discussion}
-We have examined properties of heating water. By observing trend lines in temp increase we could determine things like the conversation constant $J$ from joules to cal. I know that there was a correction on the lab that told us to find $\alpha$ instead of $J$. I was not sure what this could be. I suppose I forgot to take notes on it or something.
 
 
 \end{document}

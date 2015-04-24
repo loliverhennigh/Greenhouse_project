@@ -124,6 +124,18 @@ void print_double_array(char filename[], double * data, int size)
 	}
 }
 
+void print_int_array(char filename[], int * data, int size)
+{
+	int i = 0;
+	FILE * fp;
+	fp = fopen(filename, "w");
+	for(i = 0; i < size; i++)
+	{
+		fprintf(fp, "%i \n", data[i]);
+	}
+}
+
+
 
 
 
