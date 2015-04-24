@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.1.5)  24 APR 2015 05:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.1.5)  24 APR 2015 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -421,6 +421,11 @@ Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 )
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
@@ -490,18 +495,18 @@ File: pgflibraryfadings.code.tex 2008/02/07 v3.0.0 (rcs-revision 1.3)
 ))) (./lab_4.aux)
 \openout1 = `lab_4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -564,67 +569,89 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 24.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (13.9732pt too wide) in paragraph at lines 130--130
+Overfull \hbox (13.9732pt too wide) in paragraph at lines 132--132
 []\OT1/cmr/m/n/12 Variable| 
  []
 
-<root_moisture_content_1.jpg, id=44, 578.16pt x 433.62pt>
+[3] [4] <root_moisture_content_1.jpg, id=50, 578.16pt x 433.62pt>
 File: root_moisture_content_1.jpg Graphic file (type jpg)
 
 <use root_moisture_content_1.jpg>
-Package pdftex.def Info: root_moisture_content_1.jpg used on input line 193.
+Package pdftex.def Info: root_moisture_content_1.jpg used on input line 195.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
 
-<root_moisture_content_2.jpg, id=45, 578.16pt x 433.62pt>
+<root_moisture_content_2.jpg, id=51, 578.16pt x 433.62pt>
 File: root_moisture_content_2.jpg Graphic file (type jpg)
 
 <use root_moisture_content_2.jpg>
-Package pdftex.def Info: root_moisture_content_2.jpg used on input line 194.
+Package pdftex.def Info: root_moisture_content_2.jpg used on input line 196.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
- [3]
-<pressure_tank_compressed_volume_1.jpg, id=49, 578.16pt x 433.62pt>
+
+<pressure_tank_compressed_volume_1.jpg, id=52, 578.16pt x 433.62pt>
 File: pressure_tank_compressed_volume_1.jpg Graphic file (type jpg)
 
 <use pressure_tank_compressed_volume_1.jpg>
 Package pdftex.def Info: pressure_tank_compressed_volume_1.jpg used on input li
-ne 200.
+ne 202.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
 
-<pressure_tank_compressed_volume_2.jpg, id=50, 578.16pt x 433.62pt>
+<pressure_tank_compressed_volume_2.jpg, id=53, 578.16pt x 433.62pt>
 File: pressure_tank_compressed_volume_2.jpg Graphic file (type jpg)
 
 <use pressure_tank_compressed_volume_2.jpg>
 Package pdftex.def Info: pressure_tank_compressed_volume_2.jpg used on input li
-ne 201.
+ne 203.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
- [4] [5 <./root_moisture_content_1.jpg> <./root_moisture_content_2.jpg> <./pres
-sure_tank_compressed_volume_1.jpg> <./pressure_tank_compressed_volume_2.jpg>] (
+
+<distrobution_1.jpg, id=54, 578.16pt x 433.62pt>
+File: distrobution_1.jpg Graphic file (type jpg)
+ <use distrobution_1.jpg>
+Package pdftex.def Info: distrobution_1.jpg used on input line 213.
+(pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
+
+<distrobution_2.jpg, id=55, 578.16pt x 433.62pt>
+File: distrobution_2.jpg Graphic file (type jpg)
+ <use distrobution_2.jpg>
+Package pdftex.def Info: distrobution_2.jpg used on input line 214.
+(pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
+
+[5 <./root_moisture_content_1.jpg> <./root_moisture_content_2.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 225.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
+ [6 <./pressure_tank_compressed_volume_1.jpg> <./pressure_tank_compressed_volum
+e_2.jpg> <./distrobution_1.jpg> <./distrobution_2.jpg>] (./lab_4.bbl [7]) [8] (
 ./lab_4.aux) ) 
 Here is how much of TeX's memory you used:
- 13674 strings out of 494977
- 286595 string characters out of 6180184
- 304739 words of memory out of 5000000
- 16593 multiletter control sequences out of 15000+600000
- 13694 words of font info for 55 fonts, out of 8000000 for 9000
+ 13805 strings out of 494977
+ 288424 string characters out of 6180184
+ 305675 words of memory out of 5000000
+ 16712 multiletter control sequences out of 15000+600000
+ 14041 words of font info for 56 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 55i,11n,82p,495b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,82p,657b,245s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
@@ -632,11 +659,12 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on lab_4.pdf (5 pages, 611449 bytes).
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti12.pfb>
+Output written on lab_4.pdf (8 pages, 740030 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

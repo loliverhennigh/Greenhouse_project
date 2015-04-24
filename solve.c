@@ -12,9 +12,9 @@ int main()
 	srand((unsigned) time(&t));
 
 	// init bins
-	int num_bins = 10000;
+	int num_bins = 500;
 	int bins[num_bins];
-	double bin_size = .0001;
+	double bin_size = .002;
 	int store = 0;
 	for (i = 0; i < num_bins; i++)
 	{
@@ -24,7 +24,7 @@ int main()
 
 
 	// init greenhouse system
-	int trys = 150000;
+	int trys = 20000;
 
 	double threshold = 0.0;
 	int pump_run_time = 0;
@@ -41,7 +41,7 @@ int main()
 
 	for(i = 0; i < trys; i++)
 	{
-		threshold = 5*((double)rand() / (double)RAND_MAX);
+		threshold = 50*((double)rand() / (double)RAND_MAX);
 		pump_run_time = (rand() % 120) + 1;
 		frequency_spray = (rand() % 360) + 1;
 		spray_length = (rand() % 20) +1;
